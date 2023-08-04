@@ -24,8 +24,6 @@ public /* abstract */ class Instrumento {
                 String[] partes = linhaLida.split(" ");
                 int tecla = partes[0].codePointAt(0);
                 tecla = converteTecla(tecla);
-                if (tecla >= 'a' && tecla <= 'z')
-                    tecla -= 32; // converte para maiúscula
                 String nomeNota = partes[1];
                 Nota nota = new Nota(nomeNota, "piano");
                 notas.put(tecla, nota);
@@ -66,6 +64,10 @@ public /* abstract */ class Instrumento {
                 tecla = ';';
                 break;
         }
+
+        if (tecla >= 'a' && tecla <= 'z')
+            tecla -= 32; // converte para maiúscula
+
         return tecla;
     }
 
