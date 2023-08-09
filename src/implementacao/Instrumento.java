@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public abstract class Instrumento {
+public abstract  class Instrumento {
 
     protected HashMap<Tecla, Nota> notas;
     protected ArrayList<Tecla> teclasFrameAnterior;
