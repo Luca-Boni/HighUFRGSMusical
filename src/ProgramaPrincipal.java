@@ -3,7 +3,7 @@ import implementacao.*;
 //import java.nio.IntBuffer;
 
 import com.raylib.Jaylib;
-import interfaceGrafica.TeclaInterfaceGrafica;
+
 
 public class ProgramaPrincipal {
 
@@ -13,11 +13,11 @@ public class ProgramaPrincipal {
         //Jaylib.Font fonte = Jaylib.LoadFontEx("./assets/ui/fonts/BwQuintaPro-Light.ttf", 400, (IntBuffer)null, 0);
         // exemplo de como carregar fonte
 
-        Instrumento aa = new Instrumento("./assets/mapeamentoNotas.txt");
+        //Instrumento aa = new Instrumento("./assets/mapeamentoNotas.txt");
 
         while (!Jaylib.WindowShouldClose()) {
 
-            aa.tocar(Teclado.leEntradas());
+            //aa.tocar(Teclado.leEntradas());
             Jaylib.BeginDrawing();
             Jaylib.ClearBackground(Jaylib.RAYWHITE);
 
