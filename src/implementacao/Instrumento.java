@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public /* abstract */ class Instrumento {
+public abstract class Instrumento {
 
-    private HashMap<Integer, Nota> notas;
-    private ArrayList<Integer> notasFrameAnterior;
-    private boolean estaTocando;
+    protected HashMap<Integer, Nota> notas;
+    protected ArrayList<Integer> notasFrameAnterior;
+    protected boolean estaTocando;
 
     public Instrumento(String arquivoNotasNome) {
 
@@ -71,7 +71,7 @@ public /* abstract */ class Instrumento {
         return tecla;
     }
 
-    public void tocar(ArrayList<Integer> teclas){
+    /*public void tocar(ArrayList<Integer> teclas){
 
         for (int tecla : teclas) {
             if (notas.containsKey(tecla)) {
@@ -87,6 +87,7 @@ public /* abstract */ class Instrumento {
             }
         }
         notasFrameAnterior = teclas;
-    }
+    }*/
+    public void tocar(ArrayList<Integer> teclas){}
 
 }
