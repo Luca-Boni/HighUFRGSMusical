@@ -7,7 +7,7 @@ public class Guitarra extends Instrumento {
 
     // private boolean palhetaPressionada = false;
     public Guitarra(String arquivoNotasNome) {
-        super(arquivoNotasNome, "guitarra");
+        super("Guitarra");
 
     }
 

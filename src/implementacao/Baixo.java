@@ -1,11 +1,7 @@
 package implementacao;
-import java.util.ArrayList;
-
-public class Baixo extends Instrumento {
-    private static final int PALHETA_KEY = 257;
 
     public Baixo(String arquivoNotasNome) {
-        super(arquivoNotasNome, "baixo");
+        super(arquivoNotasNome);
     }
 
     public void tocar(ArrayList<Integer> teclas) {
@@ -30,7 +26,6 @@ public class Baixo extends Instrumento {
                 notas.get(tecla).pararNota();
             }
         }
-
         notasFrameAnterior = teclas;
     }
 }
