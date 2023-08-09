@@ -28,6 +28,8 @@ public class Nota {
     }
 
     public void pararNota() {
-        Jaylib.StopSound(som);
+        if (Jaylib.IsSoundPlaying(som)){
+            Jaylib.StopSound(som);
+        }
     }
 }

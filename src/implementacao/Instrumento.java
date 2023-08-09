@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public abstract class Instrumento {
+public abstract  class Instrumento {
 
     protected HashMap<Integer, Nota> notas;
     protected ArrayList<Integer> notasFrameAnterior;
@@ -23,7 +23,9 @@ public abstract class Instrumento {
                 String linhaLida = leitorLinha.nextLine();
                 String[] partes = linhaLida.split("@");
                 int tecla = partes[0].codePointAt(0);
-                tecla = converteTecla(tecla);
+                tecla = Tecla.converteTecla(tecla);
+                if (tecla >= 'a' && tecla <= 'z')
+                    tecla -= 32; // converte para maiúscula
                 String nomeNota = partes[1];
                 Nota nota = new Nota(nomeNota, nomeInstrumento);
                 notas.put(tecla, nota);
