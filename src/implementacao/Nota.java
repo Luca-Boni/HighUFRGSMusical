@@ -17,8 +17,11 @@ public class Nota {
     }
 
     public void atualizaNota() {
-        if (this.duracao - Jaylib.GetMusicTimePlayed(som) > 1.0d / 240d)
+        if (this.duracao - Jaylib.GetMusicTimePlayed(som) > 0.01){//1.0d / 240d){
+            System.out.println (this.duracao - Jaylib.GetMusicTimePlayed(som));
+            System.out.println (Jaylib.GetMusicTimePlayed(som));
             Jaylib.UpdateMusicStream(som);
+        }
         else
             Jaylib.StopMusicStream(som);
     }

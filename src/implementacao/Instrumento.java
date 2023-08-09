@@ -12,7 +12,7 @@ public abstract class Instrumento {
     protected ArrayList<Integer> notasFrameAnterior;
     protected boolean estaTocando;
 
-    public Instrumento(String arquivoNotasNome) {
+    public Instrumento(String arquivoNotasNome, String nomeInstrumento) {
 
         try {
             File arquivoMapNotas = new File(arquivoNotasNome); // arquivo texto de mapeamento de notas
@@ -21,11 +21,11 @@ public abstract class Instrumento {
             notasFrameAnterior = new ArrayList<Integer>();
             while (leitorLinha.hasNextLine()) {
                 String linhaLida = leitorLinha.nextLine();
-                String[] partes = linhaLida.split(" ");
+                String[] partes = linhaLida.split("@");
                 int tecla = partes[0].codePointAt(0);
                 tecla = converteTecla(tecla);
                 String nomeNota = partes[1];
-                Nota nota = new Nota(nomeNota, "piano");
+                Nota nota = new Nota(nomeNota, nomeInstrumento);
                 notas.put(tecla, nota);
             }
             leitorLinha.close();

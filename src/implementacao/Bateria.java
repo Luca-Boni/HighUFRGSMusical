@@ -9,14 +9,15 @@ public class Bateria extends Instrumento{
     private boolean estaTocando;*/
     
     public Bateria(String arquivoNotasNome) {
-        super (arquivoNotasNome);
+        super (arquivoNotasNome, "bateria");
     }
 
     public void tocar (ArrayList<Integer> teclas){
         for (int tecla : teclas){
             if (notas.containsKey(tecla)){
                 notas.get(tecla).tocarNota();
-                notasFrameAnterior.add(tecla);
+                if (!notasFrameAnterior.contains(tecla))
+                    notasFrameAnterior.add(tecla);
             }
         }
 

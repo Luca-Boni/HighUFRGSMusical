@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Piano extends Instrumento{
     
     public Piano(String arquivoNotasNome) {
-        super (arquivoNotasNome);
+        super (arquivoNotasNome, "piano");
     }
 
     public void Tocar (ArrayList<Integer> teclas){
