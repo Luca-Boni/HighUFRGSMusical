@@ -8,7 +8,7 @@ public class ProgramaPrincipal {
         Jaylib.SetTargetFPS(240);
         Jaylib.InitAudioDevice();
 
-        Instrumento aa = new Instrumento("./assets/mapeamentoNotas.txt");
+        Instrumento aa = new Guitarra("./assets/mapeamentoNotas.txt");
 
         while (!Jaylib.WindowShouldClose()) {
 

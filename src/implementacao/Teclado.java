@@ -14,6 +14,7 @@ public class Teclado {
         for (int tecla = 0; tecla <= 346; tecla++) { // 346 é o maior código associado a uma tecla em Raylib
             if (Jaylib.IsKeyDown(tecla)) {
                 teclasPressionadas.add(tecla);
+                // System.out.println(tecla);
             }
         }
 
