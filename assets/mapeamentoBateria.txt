@@ -1,0 +1,9 @@
+v@Caixa
+ @Bumbo_1
+t@Tom_1
+u@Tom
+y@Prato_ataque
+3@Hihat
+4@Openhat
+8@Prato_conducao
+9@Surdo
