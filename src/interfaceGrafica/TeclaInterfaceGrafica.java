@@ -1,13 +1,12 @@
 package interfaceGrafica;
 
 import com.raylib.Jaylib;
-import implementacao.Nota;
-import java.util.HashMap;
 
 public class TeclaInterfaceGrafica {
     
     private final Jaylib.Vector2 POSICAO;
-    private final Jaylib.Texture2D TEXTURA_ON;
+    private final Jaylib.Texture2D TEXTURA_ON_CLARO;
+    private final Jaylib.Texture2D TEXTURA_ON_ESCURO;
 
     private static int posicaoInicialX = 66;
     private static int tamanhoTecla = 51;
@@ -16,7 +15,8 @@ public class TeclaInterfaceGrafica {
     public TeclaInterfaceGrafica(String nota, int oitava){
         
         if(nota.length() == 2){
-            this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/piano/on/sharp.png");
+            this.TEXTURA_ON_CLARO = Jaylib.LoadTexture("./assets/ui/modo_claro/piano/on/sharp.png");
+            this.TEXTURA_ON_ESCURO = Jaylib.LoadTexture("./assets/ui/modo_escuro/piano/on/sharp.png");
             
             switch(nota.charAt(0)){
                 case 'C':
@@ -40,7 +40,8 @@ public class TeclaInterfaceGrafica {
             }
         }
         else{
-            this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/piano/on/" + nota + ".png");
+            this.TEXTURA_ON_CLARO = Jaylib.LoadTexture("./assets/ui/modo_claro/piano/on/" + nota + ".png");
+            this.TEXTURA_ON_ESCURO = Jaylib.LoadTexture("./assets/ui/modo_escuro/piano/on/" + nota + ".png");
 
             int posicaoNotaOitava = nota.charAt(0) - 'C';
             if(posicaoNotaOitava < 0){
@@ -51,8 +52,11 @@ public class TeclaInterfaceGrafica {
         }
     }
 
-    public void desenha(){
-        Jaylib.DrawTextureEx(TEXTURA_ON, POSICAO, 0, 0.25f, Jaylib.WHITE);
+    public void desenha(boolean modoClaro){
+        if(modoClaro)
+            Jaylib.DrawTextureEx(TEXTURA_ON_CLARO, POSICAO, 0, 0.25f, Jaylib.WHITE);
+        else
+            Jaylib.DrawTextureEx(TEXTURA_ON_ESCURO, POSICAO, 0, 0.25f, Jaylib.WHITE);
     }
 
 }

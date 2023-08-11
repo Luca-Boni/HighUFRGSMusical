@@ -1,6 +1,5 @@
 import implementacao.*;
-
-//import java.nio.IntBuffer;
+import interfaceGrafica.*;
 
 import com.raylib.Jaylib;
 
@@ -13,15 +12,20 @@ public class ProgramaPrincipal {
         //Jaylib.Font fonte = Jaylib.LoadFontEx("./assets/ui/fonts/BwQuintaPro-Light.ttf", 400, (IntBuffer)null, 0);
         // exemplo de como carregar fonte
 
-        Piano aa = new Piano("./assets/mapeamentoPiano.txt");
+        Instrumento aa = new Bateria("./assets/mapeamentoBateria.txt");
+        BotaoModoEscuro bb = new BotaoModoEscuro();
 
         while (!Jaylib.WindowShouldClose()) {
 
             aa.tocar(Teclado.leEntradas());
+            bb.desenha();
+            if(bb.foiClicado())
+                System.out.println("clicou");
             Jaylib.BeginDrawing();
             Jaylib.ClearBackground(Jaylib.RAYWHITE);
 
             //Jaylib.DrawTextEx(fonte, String.valueOf(Jaylib.GetFPS()), new Jaylib.Vector2(100, 100), 100, 20, Jaylib.LIGHTGRAY);
+            Jaylib.DrawText(String.valueOf(Jaylib.GetFPS()), 100, 100, 100, Jaylib.BLACK);
             // exemplo de como desenhar texto com fonte custom
             Jaylib.EndDrawing();
         }

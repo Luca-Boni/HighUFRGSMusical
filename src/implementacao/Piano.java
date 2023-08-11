@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Piano extends Instrumento{
     
     public Piano(String arquivoNotasNome) {
-        super (arquivoNotasNome, "piano");
+        super(arquivoNotasNome, "piano");
     }
 
-    public void Tocar (ArrayList<Integer> teclas){
+    public void tocar(ArrayList<Integer> teclas){
 
         for (int tecla : teclas) {
             if (notas.containsKey(tecla)) {
