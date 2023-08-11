@@ -6,7 +6,7 @@ public class Baixo extends Instrumento {
 
     // private boolean palhetaPressionada = false;
     public Baixo(String arquivoNotasNome) {
-        super(arquivoNotasNome);
+        super(arquivoNotasNome, "baixo");
 
     }
 
@@ -32,7 +32,6 @@ public class Baixo extends Instrumento {
                 notas.get(tecla).pararNota();
             }
         }
-
         notasFrameAnterior = teclas;
     }
 }
