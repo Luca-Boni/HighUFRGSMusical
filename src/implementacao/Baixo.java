@@ -1,5 +1,10 @@
 package implementacao;
+import java.util.ArrayList;
 
+public class Baixo extends Instrumento {
+    private static final int PALHETA_KEY = 257;
+
+    // private boolean palhetaPressionada = false;
     public Baixo(String arquivoNotasNome) {
         super(arquivoNotasNome);
     }
