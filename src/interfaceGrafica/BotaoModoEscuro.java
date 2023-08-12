@@ -11,15 +11,22 @@ public class BotaoModoEscuro {
     private boolean estaModoEscuro;
 
     public BotaoModoEscuro() {
+
         this.TEXTURA_OFF = Jaylib.LoadTexture("./assets/ui/modo_claro/modo/botao_modo.png");
+
         this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/modo_escuro/modo/botao_modo.png");
+
         this.POSICAO = new Jaylib.Vector2(893, 38);
+
         this.TAMANHO = new Jaylib.Vector2(76, 42);
 
         Calendar tempoAtual = Calendar.getInstance();
+
         int horaAtual = tempoAtual.get(Calendar.HOUR_OF_DAY);
 
-        if (horaAtual < 6 || horaAtual >= 18)
+boolean estaNoite=horaAtual < 6 || horaAtual >= 18;
+
+        if (estaNoite)
             this.estaModoEscuro = true;
         else
             this.estaModoEscuro = false;
@@ -35,9 +42,18 @@ public class BotaoModoEscuro {
     public boolean foiClicado(){
 
         if(Jaylib.IsMouseButtonPressed(Jaylib.MOUSE_LEFT_BUTTON)){
+            
             @SuppressWarnings("resource")
-            Jaylib.Rectangle coordenadasBotao = new Jaylib.Rectangle().x(POSICAO.x()).y(POSICAO.y()).width(TAMANHO.x()).height(TAMANHO.y());
-            if(Jaylib.CheckCollisionPointRec(Jaylib.GetMousePosition(), coordenadasBotao)){
+
+            Jaylib.Rectangle coordenadasBotao = new Jaylib.Rectangle()
+            .x(POSICAO.x())
+            .y(POSICAO.y())
+            .width(TAMANHO.x())
+            .height(TAMANHO.y());
+
+            boolean mouseEstaSobreBotaoModoEscuro=Jaylib.CheckCollisionPointRec(Jaylib.GetMousePosition(), coordenadasBotao);
+
+            if(mouseEstaSobreBotaoModoEscuro){
                 this.estaModoEscuro = !this.estaModoEscuro;
                 return true;
             }

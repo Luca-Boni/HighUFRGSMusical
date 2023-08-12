@@ -15,13 +15,13 @@ public class Bateria extends Instrumento{
     @Override
     public void tocar (ArrayList<Tecla> teclas){
         for (Tecla tecla : teclas){
-            if (notas.containsKey(tecla) && !teclasFrameAnterior.contains(tecla)){
+
+            boolean teclaFoiPressionadaNesteFrame=notas.containsKey(tecla) && !teclasFrameAnterior.contains(tecla);
+
+            if (teclaFoiPressionadaNesteFrame){
                 notas.get(tecla).tocarNota();
             }
         }
-
-        for (Nota nota : notas.values())
-            nota.atualizaNota();
 
         teclasFrameAnterior = teclas;
     }

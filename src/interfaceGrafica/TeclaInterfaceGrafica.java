@@ -5,12 +5,22 @@ import com.raylib.Jaylib;
 public class TeclaInterfaceGrafica {
     
     private final Jaylib.Vector2 POSICAO;
+
     private final Jaylib.Texture2D TEXTURA_ON_CLARO;
+
     private final Jaylib.Texture2D TEXTURA_ON_ESCURO;
 
+
+
     private static int posicaoInicialX = 66;
+
     private static int tamanhoTecla = 51;
+
     private static int tamanhoOitava = 357;
+
+
+
+
 
     public TeclaInterfaceGrafica(String nota, int oitava){
         
@@ -39,6 +49,7 @@ public class TeclaInterfaceGrafica {
                     break;
             }
         }
+
         else{
             this.TEXTURA_ON_CLARO = Jaylib.LoadTexture("./assets/ui/modo_claro/piano/on/" + nota + ".png");
             this.TEXTURA_ON_ESCURO = Jaylib.LoadTexture("./assets/ui/modo_escuro/piano/on/" + nota + ".png");
@@ -51,6 +62,7 @@ public class TeclaInterfaceGrafica {
             this.POSICAO = new Jaylib.Vector2(posicaoInicialX + (posicaoNotaOitava * tamanhoTecla) + tamanhoOitava*oitava, 367);
         }
     }
+
 
     public void desenha(boolean modoEscuro){
         if(!modoEscuro)
