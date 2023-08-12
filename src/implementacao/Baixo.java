@@ -1,4 +1,4 @@
-
+package implementacao;
 import java.util.ArrayList;
 
 public class Baixo extends Instrumento {
@@ -30,7 +30,6 @@ public class Baixo extends Instrumento {
                 notas.get(tecla).pararNota();
             }
         }
-
         notasFrameAnterior = teclas;
     }
 }

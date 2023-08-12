@@ -17,10 +17,11 @@ public class BotaoInstrumento {
         private boolean estado = false;
         
     
-        public BotaoInstrumento(String nomeInstrumento, Vector2 posicao) {
+        public BotaoInstrumento(String nomeInstrumento) {
             this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/modo_claro/botoes_instrumentos/on/botao_" + nomeInstrumento + "_on.png");
             this.TEXTURA_OFF = Jaylib.LoadTexture("./assets/ui/modo_claro/botoes_instrumentos/off/botao_" + nomeInstrumento + "_off.png");
         }
+
         
         
        
@@ -36,5 +37,12 @@ public class BotaoInstrumento {
         private Texture2D retrieveIMG(){
             return estado ? TEXTURA_ON : TEXTURA_OFF;
         }
-    
+
+        public Texture2D getTEXTURA_ON() {
+            return TEXTURA_ON;
+        }
+
+        public Texture2D getTEXTURA_OFF() {
+            return TEXTURA_OFF;
+        }
 }
