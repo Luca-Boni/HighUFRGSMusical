@@ -9,6 +9,7 @@ public class InterfaceGrafica {
 
     private BotoesInstrumentos botoesInstrumentos;
     private SliderVolume sliderVolume;
+    private BotaoInstrumento botaoInstrumento;
     private BotaoModoEscuro botaoModoEscuro;
     private TecladoInterfaceGrafica tecladoInterfaceGrafica;
     private Jaylib.Texture2D TEXTURA_FUNDO_CLARO;
@@ -26,6 +27,8 @@ public class InterfaceGrafica {
 
         this.modoEscuro = botaoModoEscuro.estaModoEscuro();
 
+        
+
     }
 
     public void desenha(ArrayList<Tecla> teclas){
@@ -33,6 +36,10 @@ public class InterfaceGrafica {
         @SuppressWarnings("resource")
         Jaylib.Color corTexto = new Jaylib.Color();
 
+        
+        
+
+        
         if(botaoModoEscuro.foiClicado())
             modoEscuro = !modoEscuro;
         
@@ -58,9 +65,11 @@ public class InterfaceGrafica {
         Jaylib.DrawTextEx(fonte, "Modo Escuro", new Jaylib.Vector2(878, 80), 24, 0, corTexto);
         
         Jaylib.DrawFPS(10, 10);
+
         
         botaoModoEscuro.desenha();
         tecladoInterfaceGrafica.desenha(modoEscuro, teclas);
+        this.botoesInstrumentos.desenhar(this.modoEscuro);
         //botoesInstrumentos.desenha(modoEscuro);
         //sliderVolume.desenha(modoEscuro);
 

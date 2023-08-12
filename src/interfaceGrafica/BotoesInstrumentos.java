@@ -40,9 +40,9 @@ public class BotoesInstrumentos {
 
     }
     
-    public void desenhar() {
+    public void desenhar(boolean modoEscuro) {
         for (int i = 0; i < this.botoesInstrumentos.size(); i++) {
-            this.botoesInstrumentos.get(i).desenhar(this.posicoes.get(i));
+            this.botoesInstrumentos.get(i).desenhar(this.posicoes.get(i), modoEscuro);
         }
     }
 
