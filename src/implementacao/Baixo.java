@@ -30,7 +30,6 @@ public class Baixo extends Instrumento {
                 notas.get(tecla).pararNota();
             }
         }
-
         notasFrameAnterior = teclas;
     }
 }
