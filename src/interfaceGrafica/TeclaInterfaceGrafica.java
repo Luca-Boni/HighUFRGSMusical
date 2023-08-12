@@ -52,8 +52,8 @@ public class TeclaInterfaceGrafica {
         }
     }
 
-    public void desenha(boolean modoClaro){
-        if(modoClaro)
+    public void desenha(boolean modoEscuro){
+        if(!modoEscuro)
             Jaylib.DrawTextureEx(TEXTURA_ON_CLARO, POSICAO, 0, 0.25f, Jaylib.WHITE);
         else
             Jaylib.DrawTextureEx(TEXTURA_ON_ESCURO, POSICAO, 0, 0.25f, Jaylib.WHITE);

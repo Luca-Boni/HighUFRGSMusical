@@ -8,86 +8,51 @@ import java.util.Scanner;
 
 public abstract class Instrumento {
 
-    protected HashMap<Integer, Nota> notas;
-    protected ArrayList<Integer> notasFrameAnterior;
+    protected HashMap<Tecla, Nota> notas;
+    protected ArrayList<Tecla> teclasFrameAnterior;
     protected boolean estaTocando;
 
-    public Instrumento(String arquivoNotasNome, String nomeInstrumento) {
+    public Instrumento(String nomeInstrumento) {
 
         try {
-            File arquivoMapNotas = new File(arquivoNotasNome); // arquivo texto de mapeamento de notas
+            File arquivoMapNotas = new File("./assets/mapeamento_" + nomeInstrumento + ".txt"); // arquivo texto de mapeamento de notas
             Scanner leitorLinha = new Scanner(arquivoMapNotas);
-            notas = new HashMap<Integer, Nota>();
-            notasFrameAnterior = new ArrayList<Integer>();
+            notas = new HashMap<Tecla, Nota>();
+            teclasFrameAnterior = new ArrayList<Tecla>();
             while (leitorLinha.hasNextLine()) {
                 String linhaLida = leitorLinha.nextLine();
                 String[] partes = linhaLida.split("@");
-                int tecla = partes[0].codePointAt(0);
-                tecla = converteTecla(tecla);
+                Tecla tecla = new Tecla(partes[0].codePointAt(0), false);
                 String nomeNota = partes[1];
                 Nota nota = new Nota(nomeNota, nomeInstrumento);
                 notas.put(tecla, nota);
             }
             leitorLinha.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("Houve um erro na leitura do arquivo de mapeamento das teclas para notas.");
             e.printStackTrace();
         }
 
-    }
-
-    private static int converteTecla(int tecla) { // método converte do layout ABNT2 para o layout americano, utilizado
-                                                  // pela Raylib
-        switch (tecla) {
-            case '\'':
-                tecla = '`';
-                break;
-            case ';':
-                tecla = '/';
-                break;
-            case '´':
-                tecla = '[';
-                break;
-            case ']':
-                tecla = '\\';
-                break;
-            case '\\':
-                tecla = '¢';
-                break;
-            case '~':
-                tecla = '\'';
-                break;
-            case '[':
-                tecla = ']';
-                break;
-            case 'ç':
-                tecla = ';';
-                break;
-        }
-
-        if (tecla >= 'a' && tecla <= 'z')
-            tecla -= 32; // converte para maiúscula
-
-        return tecla;
     }
 
     /*public void tocar(ArrayList<Integer> teclas){
 
         for (int tecla : teclas) {
             if (notas.containsKey(tecla)) {
-                if(!notasFrameAnterior.contains(tecla))
+                if(!teclasFrameAnterior.contains(tecla))
                     notas.get(tecla).tocarNota();
                 else
                     notas.get(tecla).atualizaNota();
             }
         }
-        for (int tecla : notasFrameAnterior) {
+        for (int tecla : teclasFrameAnterior) {
             if (!teclas.contains(tecla) && notas.containsKey(tecla)) {
                 notas.get(tecla).pararNota();
             }
         }
-        notasFrameAnterior = teclas;
+        teclasFrameAnterior = teclas;
     }*/
-    public void tocar(ArrayList<Integer> teclas){}
+
+    public void tocar(ArrayList<Tecla> teclas){}
 
 }

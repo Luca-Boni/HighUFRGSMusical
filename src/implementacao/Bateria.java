@@ -5,17 +5,17 @@ import java.util.ArrayList;
 public class Bateria extends Instrumento{
 
     /*private HashMap<Integer, Nota> notas;
-    private ArrayList<Integer> notasFrameAnterior;
+    private ArrayList<Integer> teclasFrameAnterior;
     private boolean estaTocando;*/
     
-    public Bateria(String arquivoNotasNome) {
-        super(arquivoNotasNome, "bateria");
+    public Bateria() {
+        super("bateria");
     }
 
     @Override
-    public void tocar (ArrayList<Integer> teclas){
-        for (int tecla : teclas){
-            if (notas.containsKey(tecla) && !notasFrameAnterior.contains(tecla)){
+    public void tocar (ArrayList<Tecla> teclas){
+        for (Tecla tecla : teclas){
+            if (notas.containsKey(tecla) && !teclasFrameAnterior.contains(tecla)){
                 notas.get(tecla).tocarNota();
             }
         }
@@ -23,7 +23,7 @@ public class Bateria extends Instrumento{
         for (Nota nota : notas.values())
             nota.atualizaNota();
 
-        notasFrameAnterior = teclas;
+        teclasFrameAnterior = teclas;
     }
 
 }

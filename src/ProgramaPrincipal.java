@@ -2,6 +2,7 @@ import implementacao.*;
 import interfaceGrafica.*;
 
 import com.raylib.Jaylib;
+import java.util.ArrayList;
 
 
 public class ProgramaPrincipal {
@@ -12,15 +13,18 @@ public class ProgramaPrincipal {
         //Jaylib.Font fonte = Jaylib.LoadFontEx("./assets/ui/fonts/BwQuintaPro-Light.ttf", 400, (IntBuffer)null, 0);
         // exemplo de como carregar fonte
 
-        Instrumento aa = new Bateria("./assets/mapeamentoBateria.txt");
+        Instrumento aa = new Piano();
         BotaoModoEscuro bb = new BotaoModoEscuro();
+        TecladoInterfaceGrafica tecladointerface = new TecladoInterfaceGrafica("piano");
+        ArrayList<Tecla> teclas;
 
         while (!Jaylib.WindowShouldClose()) {
 
-            aa.tocar(Teclado.leEntradas());
+            teclas = Teclado.leEntradas();
+            aa.tocar(teclas);
             bb.desenha();
-            if(bb.foiClicado())
-                System.out.println("clicou");
+            bb.foiClicado();
+            tecladointerface.desenha(bb.estaModoEscuro(), teclas);
             Jaylib.BeginDrawing();
             Jaylib.ClearBackground(Jaylib.RAYWHITE);
 
