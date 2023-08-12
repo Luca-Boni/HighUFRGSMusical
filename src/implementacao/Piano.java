@@ -4,26 +4,27 @@ import java.util.ArrayList;
 
 public class Piano extends Instrumento{
     
-    public Piano(String arquivoNotasNome) {
-        super(arquivoNotasNome, "piano");
+    public Piano() {
+        super("piano");
     }
 
-    public void tocar(ArrayList<Integer> teclas){
+    public void tocar(ArrayList<Tecla> teclas){
 
-        for (int tecla : teclas) {
+        for (Tecla tecla : teclas) {
+            
             if (notas.containsKey(tecla)) {
-                if(!notasFrameAnterior.contains(tecla))
+                if(!teclasFrameAnterior.contains(tecla))
                     notas.get(tecla).tocarNota();
                 else
                     notas.get(tecla).atualizaNota();
             }
         }
-        for (int tecla : notasFrameAnterior) {
+        for (Tecla tecla : teclasFrameAnterior) {
             if (!teclas.contains(tecla) && notas.containsKey(tecla)) {
                 notas.get(tecla).pararNota();
             }
         }
-        notasFrameAnterior = teclas;
+        teclasFrameAnterior = teclas;
 
     }
 }
