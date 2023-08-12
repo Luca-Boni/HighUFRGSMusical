@@ -1,17 +1,19 @@
+package programaPrincipal;
 import implementacao.*;
 import interfaceGrafica.*;
 
 import com.raylib.Jaylib;
 import java.util.ArrayList;
 
-
 public class ProgramaPrincipal {
+
+    public static final float ESCALA = 0.35f;
 
     public static void main(String[] args) throws Exception {
         
         ProgramaPrincipal.inicializaJanela();
 
-        Instrumento instrumento = new Bateria();
+        Instrumento instrumento = new Piano();
         
         InterfaceGrafica interfaceGrafica = new InterfaceGrafica();
         ArrayList<Tecla> teclas;
@@ -30,7 +32,7 @@ public class ProgramaPrincipal {
     }
 
     private static void inicializaJanela() {
-        Jaylib.InitWindow(1200, 600, "raylib [core] example - basic window");
+        Jaylib.InitWindow((int)(4800*ESCALA), (int)(2400*ESCALA), "High UFRGS Musical - Road to INFinity");
         Jaylib.SetTargetFPS(240);
         Jaylib.InitAudioDevice();
         Jaylib.SetMasterVolume(0.5f);

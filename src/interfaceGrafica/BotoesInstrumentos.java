@@ -3,46 +3,37 @@ package interfaceGrafica;
 import java.util.ArrayList;
 
 import com.raylib.Jaylib.Vector2;
-  
+import programaPrincipal.ProgramaPrincipal;
 
-  
 public class BotoesInstrumentos {
     private ArrayList<BotaoInstrumento> botoesInstrumentos;
     private ArrayList<Vector2> posicoes;
-    
-//------------------------------------------------------------------------------------------------------------------------
-//     Declara o possicionamento dos botões:
+
+    // ------------------------------------------------------------------------------------------------------------------------
+    // Declara o possicionamento dos botões:
 
     public BotoesInstrumentos() {
         this.posicoes = new ArrayList<Vector2>();
 
-        this.posicoes.add(new Vector2(90, 90));
+        final float POSICAO_Y = 160*ProgramaPrincipal.ESCALA;
+        this.posicoes.add(new Vector2(160*ProgramaPrincipal.ESCALA, POSICAO_Y));
+        this.posicoes.add(new Vector2(720*ProgramaPrincipal.ESCALA, POSICAO_Y));
+        this.posicoes.add(new Vector2(1280*ProgramaPrincipal.ESCALA, POSICAO_Y));
+        this.posicoes.add(new Vector2(1840*ProgramaPrincipal.ESCALA, POSICAO_Y));
 
-        this.posicoes.add(new Vector2(230, 90));
-
-        this.posicoes.add(new Vector2(370, 90));
-
-        this.posicoes.add(new Vector2(510, 90));
-
-
-        //---------------------------------------------------------------------------------------------------
-
+        // ---------------------------------------------------------------------------------------------------
 
         this.botoesInstrumentos = new ArrayList<BotaoInstrumento>();
-
-        this.botoesInstrumentos.add(new BotaoInstrumento("baixo"));
-
+        this.botoesInstrumentos.add(new BotaoInstrumento("piano"));
         this.botoesInstrumentos.add(new BotaoInstrumento("guitarra"));
-
+        this.botoesInstrumentos.add(new BotaoInstrumento("baixo"));
         this.botoesInstrumentos.add(new BotaoInstrumento("bateria"));
 
-        this.botoesInstrumentos.add(new BotaoInstrumento("piano"));
-
     }
-    
-    public void desenhar(boolean modoEscuro) {
+
+    public void desenha(boolean modoEscuro) {
         for (int i = 0; i < this.botoesInstrumentos.size(); i++) {
-            this.botoesInstrumentos.get(i).desenhar(this.posicoes.get(i), modoEscuro);
+            this.botoesInstrumentos.get(i).desenha(this.posicoes.get(i), modoEscuro);
         }
     }
 

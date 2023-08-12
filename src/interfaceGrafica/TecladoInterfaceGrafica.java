@@ -8,22 +8,15 @@ import java.util.Scanner;
 
 import com.raylib.Jaylib;
 import implementacao.*;
+import programaPrincipal.ProgramaPrincipal;
 
 public class TecladoInterfaceGrafica {
 
     private final HashMap<Tecla, String> NOTAS;
-
     private final Jaylib.Texture2D TEXTURA_CLARO;
-
     private final Jaylib.Texture2D TEXTURA_ESCURO;
-
     private final HashMap<Tecla, TeclaInterfaceGrafica> TECLAS;
-
     private int menorOitava;
-
-
-
-
 
     public TecladoInterfaceGrafica(String instrumentoNome) {
 
@@ -67,9 +60,11 @@ public class TecladoInterfaceGrafica {
     public void desenha(boolean modoEscuro, ArrayList<Tecla> teclas) {
 
         if (!modoEscuro) {
-            Jaylib.DrawTextureEx(TEXTURA_CLARO, new Jaylib.Vector2(0, 326), 0, 0.25f, Jaylib.WHITE);
+            Jaylib.DrawTextureEx(TEXTURA_CLARO, new Jaylib.Vector2(0, 1304 * ProgramaPrincipal.ESCALA), 0,
+                    ProgramaPrincipal.ESCALA, Jaylib.WHITE);
         } else {
-            Jaylib.DrawTextureEx(TEXTURA_ESCURO, new Jaylib.Vector2(0, 326), 0, 0.25f, Jaylib.WHITE);
+            Jaylib.DrawTextureEx(TEXTURA_ESCURO, new Jaylib.Vector2(0, 1304 * ProgramaPrincipal.ESCALA), 0,
+                    ProgramaPrincipal.ESCALA, Jaylib.WHITE);
         }
 
         for (Tecla tecla : teclas) {

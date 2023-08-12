@@ -1,6 +1,9 @@
 package interfaceGrafica;
 
 import com.raylib.Jaylib;
+
+import programaPrincipal.ProgramaPrincipal;
+
 import java.util.Calendar;
 
 public class BotaoModoEscuro {
@@ -16,9 +19,9 @@ public class BotaoModoEscuro {
 
         this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/modo_escuro/modo/botao_modo.png");
 
-        this.POSICAO = new Jaylib.Vector2(893, 38);
+        this.POSICAO = new Jaylib.Vector2(3572*ProgramaPrincipal.ESCALA, 152*ProgramaPrincipal.ESCALA);
 
-        this.TAMANHO = new Jaylib.Vector2(76, 42);
+        this.TAMANHO = new Jaylib.Vector2(304*ProgramaPrincipal.ESCALA, 168*ProgramaPrincipal.ESCALA);
 
         Calendar tempoAtual = Calendar.getInstance();
 
@@ -34,9 +37,9 @@ boolean estaNoite=horaAtual < 6 || horaAtual >= 18;
 
     public void desenha() {
         if (estaModoEscuro)
-            Jaylib.DrawTextureEx(TEXTURA_ON, POSICAO, 0, 0.25f, Jaylib.WHITE);
+            Jaylib.DrawTextureEx(TEXTURA_ON, POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
         else
-            Jaylib.DrawTextureEx(TEXTURA_OFF, POSICAO, 0, 0.25f, Jaylib.WHITE);
+            Jaylib.DrawTextureEx(TEXTURA_OFF, POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
     }
 
     public boolean foiClicado(){
