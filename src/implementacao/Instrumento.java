@@ -15,34 +15,26 @@ public abstract class Instrumento {
     public Instrumento(String nomeInstrumento) {
 
         try {
-            File arquivoMapNotas = new File("./assets/mapeamento_" + nomeInstrumento + ".txt"); // arquivo texto de mapeamento de notas
-
+            File arquivoMapNotas = new File("./assets/mapeamento_" + nomeInstrumento + ".txt"); // arquivo texto de
+                                                                                                // mapeamento de notas
             Scanner leitorLinha = new Scanner(arquivoMapNotas);
-
             notas = new HashMap<Tecla, Nota>();
-
             teclasFrameAnterior = new ArrayList<Tecla>();
 
-            //--------------------------------------------------------------------------------------------------
-            //    percorre os arquivos de textos e associa as notas as respectivas teclas do teclado:
+            // --------------------------------------------------------------------------------------------------
+            // percorre os arquivos de textos e associa as notas as respectivas teclas do
+            // teclado:
 
             while (leitorLinha.hasNextLine()) {
-
                 String linhaLida = leitorLinha.nextLine();
-
                 String[] partes = linhaLida.split("@");
-
                 Tecla tecla = new Tecla(partes[0].codePointAt(0), false);
-
                 String nomeNota = partes[1];
-
                 Nota nota = new Nota(nomeNota, nomeInstrumento);
-
                 notas.put(tecla, nota);
             }
 
-            //------------------------------------------------------------------------------------------------
-           
+            // ------------------------------------------------------------------------------------------------
 
             leitorLinha.close();
 
@@ -53,7 +45,7 @@ public abstract class Instrumento {
 
     }
 
-    
-    public void tocar(ArrayList<Tecla> teclas){}
+    public void tocar(ArrayList<Tecla> teclas) {
+    }
 
 }

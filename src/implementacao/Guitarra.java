@@ -3,10 +3,10 @@ package implementacao;
 import java.util.ArrayList;
 
 public class Guitarra extends Instrumento {
-    private static final int PALHETA_KEY = 257;
+    private static final Tecla PALHETA_KEY = new Tecla(257, false);
 
     // private boolean palhetaPressionada = false;
-    public Guitarra(String arquivoNotasNome) {
+    public Guitarra() {
         super("guitarra");
 
     }
