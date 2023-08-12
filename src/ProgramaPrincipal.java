@@ -24,6 +24,8 @@ public class ProgramaPrincipal {
             Jaylib.BeginDrawing();
             Jaylib.ClearBackground(Jaylib.RAYWHITE);
 
+            
+
             //Jaylib.DrawTextEx(fonte, String.valueOf(Jaylib.GetFPS()), new Jaylib.Vector2(100, 100), 100, 20, Jaylib.LIGHTGRAY);
             Jaylib.DrawText(String.valueOf(Jaylib.GetFPS()), 100, 100, 100, Jaylib.BLACK);
             // exemplo de como desenhar texto com fonte custom
