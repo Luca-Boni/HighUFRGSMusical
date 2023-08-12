@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Baixo extends Instrumento {
     private static final Tecla PALHETA_KEY = new Tecla(257, false);
 
-    public Baixo(String arquivoNotasNome) {
+    public Baixo() {
         super("baixo");
     }
 
@@ -15,7 +15,6 @@ public class Baixo extends Instrumento {
         
         if (palhetaFoiPressionada){
             for (Tecla tecla : teclas) {
-                System.out.println(tecla);
                 if (notas.containsKey(tecla)) {
                     notas.get(tecla).pararNota();
                     notas.get(tecla).tocarNota();

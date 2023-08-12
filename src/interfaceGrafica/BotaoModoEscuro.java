@@ -16,18 +16,15 @@ public class BotaoModoEscuro {
     public BotaoModoEscuro() {
 
         this.TEXTURA_OFF = Jaylib.LoadTexture("./assets/ui/modo_claro/modo/botao_modo.png");
-
         this.TEXTURA_ON = Jaylib.LoadTexture("./assets/ui/modo_escuro/modo/botao_modo.png");
-
-        this.POSICAO = new Jaylib.Vector2(3572*ProgramaPrincipal.ESCALA, 152*ProgramaPrincipal.ESCALA);
-
-        this.TAMANHO = new Jaylib.Vector2(304*ProgramaPrincipal.ESCALA, 168*ProgramaPrincipal.ESCALA);
+        this.POSICAO = new Jaylib.Vector2(3572 * ProgramaPrincipal.ESCALA, 152 * ProgramaPrincipal.ESCALA);
+        this.TAMANHO = new Jaylib.Vector2(304 * ProgramaPrincipal.ESCALA, 168 * ProgramaPrincipal.ESCALA);
 
         Calendar tempoAtual = Calendar.getInstance();
 
         int horaAtual = tempoAtual.get(Calendar.HOUR_OF_DAY);
 
-boolean estaNoite=horaAtual < 6 || horaAtual >= 18;
+        boolean estaNoite = horaAtual < 6 || horaAtual >= 18;
 
         if (estaNoite)
             this.estaModoEscuro = true;
@@ -42,21 +39,22 @@ boolean estaNoite=horaAtual < 6 || horaAtual >= 18;
             Jaylib.DrawTextureEx(TEXTURA_OFF, POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
     }
 
-    public boolean foiClicado(){
+    public boolean foiClicado() {
 
-        if(Jaylib.IsMouseButtonPressed(Jaylib.MOUSE_LEFT_BUTTON)){
-            
+        if (Jaylib.IsMouseButtonPressed(Jaylib.MOUSE_LEFT_BUTTON)) {
+
             @SuppressWarnings("resource")
 
             Jaylib.Rectangle coordenadasBotao = new Jaylib.Rectangle()
-            .x(POSICAO.x())
-            .y(POSICAO.y())
-            .width(TAMANHO.x())
-            .height(TAMANHO.y());
+                    .x(POSICAO.x())
+                    .y(POSICAO.y())
+                    .width(TAMANHO.x())
+                    .height(TAMANHO.y());
 
-            boolean mouseEstaSobreBotaoModoEscuro=Jaylib.CheckCollisionPointRec(Jaylib.GetMousePosition(), coordenadasBotao);
+            boolean mouseEstaSobreBotaoModoEscuro = Jaylib.CheckCollisionPointRec(Jaylib.GetMousePosition(),
+                    coordenadasBotao);
 
-            if(mouseEstaSobreBotaoModoEscuro){
+            if (mouseEstaSobreBotaoModoEscuro) {
                 this.estaModoEscuro = !this.estaModoEscuro;
                 return true;
             }
@@ -64,7 +62,7 @@ boolean estaNoite=horaAtual < 6 || horaAtual >= 18;
         return false;
     }
 
-    public boolean estaModoEscuro(){
+    public boolean estaModoEscuro() {
         return this.estaModoEscuro;
     }
 

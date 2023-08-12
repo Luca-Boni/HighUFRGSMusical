@@ -17,7 +17,6 @@ public class Guitarra extends Instrumento {
         
         if (palhetaFoiPressionada){
             for (Tecla tecla : teclas) {
-                System.out.println(tecla);
                 if (notas.containsKey(tecla)) {
                     notas.get(tecla).pararNota();
                     notas.get(tecla).tocarNota();

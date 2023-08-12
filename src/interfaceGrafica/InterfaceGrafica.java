@@ -20,7 +20,7 @@ public class InterfaceGrafica {
             (IntBuffer) null, 0);
 
     public InterfaceGrafica() {
-        this.botoesInstrumentos = new BotoesInstrumentos();
+        this.botoesInstrumentos = new BotoesInstrumentos(modoEscuro);
         // this.sliderVolume = new SliderVolume();
         this.botaoModoEscuro = new BotaoModoEscuro();
         this.tecladoInterfaceGrafica = new TecladoInterfaceGrafica("piano");
@@ -31,6 +31,14 @@ public class InterfaceGrafica {
 
     }
 
+    public boolean selecionaInstrumento() {
+        return botoesInstrumentos.selecionaInstrumento();
+    }
+
+    public String getInstrumento() {
+        return botoesInstrumentos.getInstrumento();
+    }
+
     public void desenha(ArrayList<Tecla> teclas) {
 
         Jaylib.Color corTexto = new Jaylib.Color();
@@ -39,7 +47,6 @@ public class InterfaceGrafica {
             modoEscuro = !modoEscuro;
 
         if (modoEscuro) {
-
             corTexto.r((byte) 0x8A)
                     .g((byte) 0x8A)
                     .b((byte) 0x8A)
@@ -47,7 +54,6 @@ public class InterfaceGrafica {
 
             Jaylib.DrawTextureEx(TEXTURA_FUNDO_ESCURO, new Jaylib.Vector2(0, 0), 0, 1, Jaylib.WHITE);
         } else {
-
             corTexto.r((byte) 0x51)
                     .g((byte) 0x51)
                     .b((byte) 0x51)
@@ -56,14 +62,12 @@ public class InterfaceGrafica {
             Jaylib.DrawTextureEx(TEXTURA_FUNDO_CLARO, new Jaylib.Vector2(0, 0), 0, 1, Jaylib.WHITE);
         }
 
-        Jaylib.DrawTextEx(fonte, "Modo Escuro", new Jaylib.Vector2(3540*ProgramaPrincipal.ESCALA, 320*ProgramaPrincipal.ESCALA), 80*ProgramaPrincipal.ESCALA, 0, corTexto);
-
         Jaylib.DrawFPS(10, 10);
 
+        Jaylib.DrawTextEx(fonte, "Modo Escuro", new Jaylib.Vector2(3540*ProgramaPrincipal.ESCALA, 320*ProgramaPrincipal.ESCALA), 80*ProgramaPrincipal.ESCALA, 0, corTexto);
         botaoModoEscuro.desenha();
         tecladoInterfaceGrafica.desenha(modoEscuro, teclas);
-        this.botoesInstrumentos.desenha(this.modoEscuro);
-        // botoesInstrumentos.desenha(modoEscuro);
+        botoesInstrumentos.desenha(this.modoEscuro);
         // sliderVolume.desenha(modoEscuro);
 
     }
