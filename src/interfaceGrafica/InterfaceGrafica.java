@@ -21,7 +21,7 @@ public class InterfaceGrafica {
 
     public InterfaceGrafica() {
         this.botoesInstrumentos = new BotoesInstrumentos(modoEscuro);
-        // this.sliderVolume = new SliderVolume();
+        this.sliderVolume = new SliderVolume();
         this.botaoModoEscuro = new BotaoModoEscuro();
         this.tecladoInterfaceGrafica = new TecladoInterfaceGrafica("piano");
         this.TEXTURA_FUNDO_CLARO = Jaylib.LoadTexture("./assets/ui/modo_claro/background.png");
@@ -68,6 +68,7 @@ public class InterfaceGrafica {
         botaoModoEscuro.desenha();
         tecladoInterfaceGrafica.desenha(modoEscuro, teclas);
         botoesInstrumentos.desenha(this.modoEscuro);
+        sliderVolume.criaBotaoVolume( modoEscuro, teclas);
         // sliderVolume.desenha(modoEscuro);
 
     }
