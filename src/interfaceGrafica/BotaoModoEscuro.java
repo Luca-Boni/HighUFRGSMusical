@@ -32,11 +32,13 @@ public class BotaoModoEscuro {
             this.estaModoEscuro = false;
     }
 
-    public void desenha() {
+    public void desenha(Jaylib.Color corTexto) {
         if (estaModoEscuro)
             Jaylib.DrawTextureEx(TEXTURA_ON, POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
         else
             Jaylib.DrawTextureEx(TEXTURA_OFF, POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
+        
+        Jaylib.DrawTextEx(InterfaceGrafica.getFonte(), "Modo Escuro", new Jaylib.Vector2(POSICAO.x() - 25*ProgramaPrincipal.ESCALA, POSICAO.y() + 175*ProgramaPrincipal.ESCALA), 80*ProgramaPrincipal.ESCALA, 0, corTexto);
     }
 
     public boolean foiClicado() {

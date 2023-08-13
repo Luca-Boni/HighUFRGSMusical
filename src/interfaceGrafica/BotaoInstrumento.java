@@ -3,10 +3,6 @@ package interfaceGrafica;
 import com.raylib.Jaylib;
 import programaPrincipal.ProgramaPrincipal;
 
-/**
- * 
- */
-
 public class BotaoInstrumento {
 
     private static final Jaylib.Vector2 TAMANHO = new Jaylib.Vector2(400*ProgramaPrincipal.ESCALA, 400*ProgramaPrincipal.ESCALA);
@@ -73,6 +69,43 @@ public class BotaoInstrumento {
 
     public void desenha(boolean modoEscuro) {
         Jaylib.DrawTextureEx(retrieveIMG(modoEscuro), POSICAO, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
+
+        @SuppressWarnings("resource")
+        Jaylib.Color corTexto = new Jaylib.Color()
+                                          .r((byte) 0x51)
+                                          .g((byte) 0x51)
+                                          .b((byte) 0x51)
+                                          .a((byte) 0xFF);
+
+
+        if(modoEscuro){
+            if(estaAtivo)
+                corTexto.r((byte) 0xDA)
+                        .g((byte) 0x6C)
+                        .b((byte) 0x1C)
+                        .a((byte) 0xFF);
+            else
+                corTexto.r((byte) 0x8A)
+                        .g((byte) 0x8A)
+                        .b((byte) 0x8A)
+                        .a((byte) 0xFF);
+        }
+        else
+            if(estaAtivo)
+                corTexto.r((byte) 0x44)
+                        .g((byte) 0x80)
+                        .b((byte) 0xDC)
+                        .a((byte) 0xFF);
+
+        String nomeInstrumentoPrimeiraMaiuscula = nomeInstrumento.substring(0, 1).toUpperCase() + nomeInstrumento.substring(1);
+
+        Jaylib.DrawTextEx(InterfaceGrafica.getFonte(), 
+                          nomeInstrumentoPrimeiraMaiuscula, 
+                          new Jaylib.Vector2(POSICAO.x() + 200*ProgramaPrincipal.ESCALA - Jaylib.MeasureTextEx(InterfaceGrafica.getFonte(), nomeInstrumentoPrimeiraMaiuscula, 90*ProgramaPrincipal.ESCALA, 0).x()/2,
+                                             POSICAO.y() + 450*ProgramaPrincipal.ESCALA),
+                          90*ProgramaPrincipal.ESCALA,
+                          0,
+                          corTexto);
     }
 
     public boolean foiClicado(){

@@ -35,7 +35,7 @@ public class TecladoInterfaceGrafica {
 
                 char oitavaChar = partes[1].charAt(partes[1].length() - 1);
                 int oitava = oitavaChar - '0';
-                if (nomeNota.charAt(0) == 'C' && oitava < menorOitava) {
+                if (/*nomeNota.charAt(0) == 'C' &&*/ oitava < menorOitava) {
                     this.menorOitava = oitava;
                 }
                 NOTAS.put(tecla, nomeNota);
@@ -57,7 +57,7 @@ public class TecladoInterfaceGrafica {
         this.TEXTURA_ESCURO = Jaylib.LoadTexture("./assets/ui/modo_escuro/piano/default.png");
     }
 
-    public void desenha(boolean modoEscuro, ArrayList<Tecla> teclas) {
+    public void desenha(boolean modoEscuro, ArrayList<Tecla> teclas, String instrumentoNome) {
 
         if (!modoEscuro) {
             Jaylib.DrawTextureEx(TEXTURA_CLARO, new Jaylib.Vector2(0, 1304 * ProgramaPrincipal.ESCALA), 0,
@@ -72,11 +72,12 @@ public class TecladoInterfaceGrafica {
                 String nomeNota = NOTAS.get(tecla);
                 int oitava = nomeNota.charAt(nomeNota.length() - 1) - '0' - menorOitava;
 
-                if (oitava >= 0 && oitava < 3) {
+                if (oitava >= 0 && oitava < 3 && instrumentoNome != "bateria") {
                     TECLAS.get(tecla).desenha(modoEscuro);
                 }
             }
         }
+        
     }
 
 }

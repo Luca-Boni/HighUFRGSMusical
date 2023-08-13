@@ -1,7 +1,6 @@
 package interfaceGrafica;
 
 import implementacao.*;
-import programaPrincipal.ProgramaPrincipal;
 
 import com.raylib.Jaylib;
 import java.nio.IntBuffer;
@@ -39,6 +38,10 @@ public class InterfaceGrafica {
         return botoesInstrumentos.getInstrumento();
     }
 
+    public static Jaylib.Font getFonte() {
+        return fonte;
+    }
+
     public void desenha(ArrayList<Tecla> teclas) {
 
         Jaylib.Color corTexto = new Jaylib.Color();
@@ -62,15 +65,12 @@ public class InterfaceGrafica {
             Jaylib.DrawTextureEx(TEXTURA_FUNDO_CLARO, new Jaylib.Vector2(0, 0), 0, 1, Jaylib.WHITE);
         }
 
-        Jaylib.DrawFPS(10, 10);
-
-        Jaylib.DrawTextEx(fonte, "Modo Escuro", new Jaylib.Vector2(3540*ProgramaPrincipal.ESCALA, 320*ProgramaPrincipal.ESCALA), 80*ProgramaPrincipal.ESCALA, 0, corTexto);
-        botaoModoEscuro.desenha();
-        tecladoInterfaceGrafica.desenha(modoEscuro, teclas);
+        sliderVolume.alterouVolume(teclas);
+        
+        botaoModoEscuro.desenha(corTexto);
+        tecladoInterfaceGrafica.desenha(modoEscuro, teclas, this.getInstrumento());
         botoesInstrumentos.desenha(this.modoEscuro);
-        sliderVolume.criaBotaoVolume( modoEscuro, teclas);
-        // sliderVolume.desenha(modoEscuro);
-
+        sliderVolume.desenha(modoEscuro, corTexto);
     }
 
 }

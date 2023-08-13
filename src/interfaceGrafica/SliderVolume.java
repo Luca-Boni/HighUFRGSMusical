@@ -15,7 +15,7 @@ public class SliderVolume {  //provavelmente vai ser completamente reformulada, 
     private Jaylib.Texture2D bolaEscuro;
 
     private Vector2 posicaoBola;
-    private final Vector2 POSICAO_BARRA = new Jaylib.Vector2(4400*ProgramaPrincipal.ESCALA, 80*ProgramaPrincipal.ESCALA); //y é 1280 ou 80
+    private final Vector2 POSICAO_BARRA = new Jaylib.Vector2(4400*ProgramaPrincipal.ESCALA, 80*ProgramaPrincipal.ESCALA);
 
     private final int VOLUME_UP = 265;
     private final int VOLUME_DOWN = 264;
@@ -33,15 +33,7 @@ public class SliderVolume {  //provavelmente vai ser completamente reformulada, 
         this.bolaEscuro = Jaylib.LoadTexture("./assets/ui/modo_escuro/slider_volume/bola_escuro.png");
     }
 
-    
-    /*private Jaylib.Texture2D retrieveTexture(boolean modoEscuro){
-        return modoEscuro? textura_Escuro : textura_Claro;
-    } */
-    
-    
-
-
-    private void desenhar (boolean modoEscuro){ //Tenho que mudar isso daqui
+    public void desenha(boolean modoEscuro, Jaylib.Color corTexto){ //Tenho que mudar isso daqui
         if (modoEscuro){
             Jaylib.DrawTextureEx(barraEscuro, POSICAO_BARRA, 0, ProgramaPrincipal.ESCALA , Jaylib.WHITE);
             Jaylib.DrawTextureEx(bolaEscuro, posicaoBola, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
@@ -50,10 +42,17 @@ public class SliderVolume {  //provavelmente vai ser completamente reformulada, 
             Jaylib.DrawTextureEx(barraClaro, POSICAO_BARRA, 0, ProgramaPrincipal.ESCALA , Jaylib.WHITE);
             Jaylib.DrawTextureEx(bolaClaro, posicaoBola, 0, ProgramaPrincipal.ESCALA, Jaylib.WHITE);
         }
+
+        Jaylib.DrawTextEx(InterfaceGrafica.getFonte(),
+                          "Volume",
+                          new Vector2(POSICAO_BARRA.x() - 25*ProgramaPrincipal.ESCALA, POSICAO_BARRA.y() + 1250*ProgramaPrincipal.ESCALA),
+                          80*ProgramaPrincipal.ESCALA,
+                          0,
+                          corTexto);
     }
 
     
-    public void criaBotaoVolume(boolean modoEscuro,ArrayList<Tecla> teclas) {
+    public void alterouVolume(ArrayList<Tecla> teclas) {
         for (Tecla tecla : teclas) {
             if (tecla.equals(new Tecla(VOLUME_UP,false))) {
                 volumeAtual += 0.01f;
@@ -78,8 +77,6 @@ public class SliderVolume {  //provavelmente vai ser completamente reformulada, 
                 Jaylib.SetMasterVolume(volumeAtual);
             }
         }
-        desenhar(modoEscuro);
-
     }
 
 }
