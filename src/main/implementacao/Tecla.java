@@ -34,10 +34,10 @@ public class Tecla {
                     this.tecla = ';';
                     break;
             }
-
-            if (tecla >= 'a' && tecla <= 'z')
-                this.tecla -= 32; // converte para maiúscula
         }
+        
+        if (tecla >= 'a' && tecla <= 'z')
+                this.tecla -= 32; // converte para maiúscula
     }
 
     public int getTecla(){

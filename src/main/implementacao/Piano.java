@@ -6,16 +6,39 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public abstract class Instrumento {
+public class Piano extends Instrumento {
 
-    protected HashMap<Tecla, Nota> notas;
-    protected ArrayList<Tecla> teclasFrameAnterior;
-    protected boolean estaTocando;
+    public Piano() {
+        super("piano");
+    }
 
-    public Instrumento(String nomeInstrumento) {
+    public boolean tocar(ArrayList<Tecla> teclas) {
 
+        boolean estaTocando = false;
+        for (Tecla tecla : teclas) {
+            boolean teclaFoiPressionada = notas.containsKey(tecla);
+            if (teclaFoiPressionada) {
+                if (!teclasFrameAnterior.contains(tecla)){
+                    notas.get(tecla).tocarNota();
+                    estaTocando = true;
+                }
+            }
+        }
+        for (Tecla tecla : teclasFrameAnterior) {
+
+            boolean teclaPressionadaFrameAnterior = !teclas.contains(tecla) && notas.containsKey(tecla);
+
+            if (teclaPressionadaFrameAnterior) {
+                notas.get(tecla).pararNota();
+            }
+        }
+        teclasFrameAnterior = teclas;
+        return estaTocando;
+    }
+
+    public Piano PianoCopy() {
         try {
-            File arquivoMapNotas = new File("./assets/mapeamento_" + nomeInstrumento + ".txt"); // arquivo texto de
+            File arquivoMapNotas = new File("D:/GitHub/HighUFRGSMusical/assets/mapeamento_piano.txt"); // arquivo texto de
                                                                                                 // mapeamento de notas
             Scanner leitorLinha = new Scanner(arquivoMapNotas);
             notas = new HashMap<Tecla, Nota>();
@@ -30,7 +53,7 @@ public abstract class Instrumento {
                 String[] partes = linhaLida.split("@");
                 Tecla tecla = new Tecla(partes[0].codePointAt(0), false);
                 String nomeNota = partes[1];
-                Nota nota = new Nota(nomeNota, nomeInstrumento);
+                Nota nota = new Nota(nomeNota, "piano");
                 notas.put(tecla, nota);
             }
 
@@ -42,10 +65,7 @@ public abstract class Instrumento {
             System.out.println("Houve um erro na leitura do arquivo de mapeamento das teclas para notas.");
             e.printStackTrace();
         }
+        return this;
 
     }
-
-    public void tocar(ArrayList<Tecla> teclas) {
-    }
-
 }
